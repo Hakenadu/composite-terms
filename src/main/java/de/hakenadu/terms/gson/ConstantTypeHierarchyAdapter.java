@@ -24,6 +24,10 @@ public class ConstantTypeHierarchyAdapter implements JsonSerializer<Constant>, J
 
 	private final List<ConstantValueConverter<?>> valueConverters = new LinkedList<>();
 
+	public ConstantTypeHierarchyAdapter() {
+		addDefaultValueConverters();
+	}
+
 	protected void addDefaultValueConverters() {
 		getValueConverters().add(new BooleanConstantValueConverter());
 		getValueConverters().add(new NumberConstantValueConverter());
