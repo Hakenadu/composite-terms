@@ -73,7 +73,7 @@ The concrete Visitor must be able to provide values for all variable names in a 
 ```java
 /*
  * a SimpleEvaluationVisitor is an implementation of the EvaluationVisitor
- * which uses a java.util.Map to map values to concrete variable names.
+ * which uses a java.util.Map to map concrete variable names to values.
  */
 SimpleEvaluationVisitor evaluationVisitor = new SimpleEvaluationVisitor();
 
@@ -88,4 +88,11 @@ myTerm.accept(evaluationVisitor, evaluationContext);
 
 // ...done: result == 1000
 Number result = (Number) evaluationContext.getValue();
+```
+
+## Serialize a Term
+Serialization is also done via [gson](https://github.com/google/gson).
+```java
+// again we'll use myTerm from above ;-)
+String json = TermsGson.createGson().toJson(myTerm);
 ```
