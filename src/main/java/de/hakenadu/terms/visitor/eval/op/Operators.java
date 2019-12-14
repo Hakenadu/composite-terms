@@ -9,7 +9,14 @@ import de.hakenadu.terms.visitor.eval.op.impl.EqualsOperationEvaluator;
 import de.hakenadu.terms.visitor.eval.op.impl.MultiplyOperationEvaluator;
 import de.hakenadu.terms.visitor.eval.op.impl.SubtractOperationEvaluator;
 
-public class Operators {
+/**
+ * contains all default implementations of {@link OperationEvaluator
+ * OperationEvaluators}
+ * 
+ * @author Manuel Seiche
+ * @since 14.12.2019
+ */
+public final class Operators {
 
 	public static final String ADD = "add";
 	public static final String SUBTRACT = "subtract";
