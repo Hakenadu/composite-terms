@@ -14,10 +14,6 @@ public final class AddOperationEvaluator implements OperationEvaluator {
 				throw new IllegalArgumentException("operandValue not of type Number: " + operandValue);
 			}
 
-			if (result instanceof Integer && operandValue instanceof Integer) {
-				result = result.intValue() + ((Number) operandValue).intValue();
-			}
-
 			result = result.doubleValue() + ((Number) operandValue).doubleValue();
 		}
 

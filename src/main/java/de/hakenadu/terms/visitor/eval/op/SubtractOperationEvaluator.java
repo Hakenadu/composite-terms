@@ -19,10 +19,6 @@ public final class SubtractOperationEvaluator implements OperationEvaluator {
 				continue;
 			}
 
-			if (result instanceof Integer && operandValue instanceof Integer) {
-				result = result.intValue() - ((Number) operandValue).intValue();
-			}
-
 			result = result.doubleValue() - ((Number) operandValue).doubleValue();
 		}
 
