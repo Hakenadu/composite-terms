@@ -4,6 +4,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.hakenadu.terms.visitor.eval.op.impl.AddOperationEvaluator;
+import de.hakenadu.terms.visitor.eval.op.impl.SubtractOperationEvaluator;
+
 public class Operators {
 
 	public static final String ADD = "add";

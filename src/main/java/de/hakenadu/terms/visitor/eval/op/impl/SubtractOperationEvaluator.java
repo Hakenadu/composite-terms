@@ -1,6 +1,8 @@
-package de.hakenadu.terms.visitor.eval.op;
+package de.hakenadu.terms.visitor.eval.op.impl;
 
 import java.util.List;
+
+import de.hakenadu.terms.visitor.eval.op.OperationEvaluator;
 
 public final class SubtractOperationEvaluator implements OperationEvaluator {
 
