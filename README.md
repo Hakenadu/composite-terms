@@ -1,6 +1,7 @@
 # composite-terms
-A light extensible <b>java</b> library for creating composites of terms which are evaluatable using a visitor pattern.
+A light extensible <b>java 8+</b> library for creating composites of terms which are evaluatable using a visitor pattern.
 Serialization to json and deserialization from json are also supported by default using [gson](https://github.com/google/gson).
+No other libraries are needed.
 
 - [JSON](#json)
 - [Deserialization](#deserialization)
