@@ -2,28 +2,18 @@ package de.hakenadu.terms.visitor.eval.op.impl;
 
 import java.util.List;
 
-import de.hakenadu.terms.visitor.eval.op.OperationEvaluator;
+import de.hakenadu.terms.visitor.eval.op.NumberOperationEvaluator;
 
-public final class SubtractOperationEvaluator implements OperationEvaluator {
+/**
+ * evaluates the subtraction operation
+ * 
+ * @author Manuel Seiche
+ * @since 14.12.2019
+ */
+public final class SubtractOperationEvaluator extends NumberOperationEvaluator {
 
 	@Override
-	public Number evaluate(final List<Object> operandValues) {
-		Number result = null;
-
-		for (final Object operandValue : operandValues) {
-
-			if (!(operandValue instanceof Number)) {
-				throw new IllegalArgumentException("operandValue not of type Number: " + operandValue);
-			}
-
-			if (result == null) {
-				result = (Number) operandValue;
-				continue;
-			}
-
-			result = result.doubleValue() - ((Number) operandValue).doubleValue();
-		}
-
-		return result;
+	protected Object evaluateNumbers(final List<Number> operandValues) {
+		return operandValues.stream().mapToDouble(Number::doubleValue).reduce((a, b) -> a - b).orElse(0);
 	}
 }

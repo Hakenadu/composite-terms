@@ -5,15 +5,15 @@ import java.util.List;
 import de.hakenadu.terms.visitor.eval.op.NumberOperationEvaluator;
 
 /**
- * evaluates the addition operation
+ * evaluates the multiplication operation
  * 
  * @author Manuel Seiche
  * @since 14.12.2019
  */
-public final class AddOperationEvaluator extends NumberOperationEvaluator {
+public final class MultiplyOperationEvaluator extends NumberOperationEvaluator {
 
 	@Override
 	protected Object evaluateNumbers(final List<Number> operandValues) {
-		return operandValues.stream().mapToDouble(Number::doubleValue).reduce(0, (a, b) -> a + b);
+		return operandValues.stream().mapToDouble(Number::doubleValue).reduce((a, b) -> a * b).orElse(0);
 	}
 }
