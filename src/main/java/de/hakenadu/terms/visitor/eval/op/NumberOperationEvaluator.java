@@ -3,12 +3,12 @@ package de.hakenadu.terms.visitor.eval.op;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class NumberOperationEvaluator implements OperationEvaluator {
+public interface NumberOperationEvaluator extends OperationEvaluator {
 
-	protected abstract Object evaluateNumbers(List<Number> operandValues);
+	Object evaluateNumbers(List<Number> operandValues);
 
 	@Override
-	public Object evaluate(final List<Object> operandValues) {
+	default Object evaluate(final List<Object> operandValues) {
 		final List<Number> numberOperands = new ArrayList<>();
 
 		for (final Object operandValue : operandValues) {

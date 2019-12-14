@@ -10,10 +10,10 @@ import de.hakenadu.terms.visitor.eval.op.NumberOperationEvaluator;
  * @author Manuel Seiche
  * @since 14.12.2019
  */
-public final class SubtractOperationEvaluator extends NumberOperationEvaluator {
+public final class SubtractOperationEvaluator implements NumberOperationEvaluator {
 
 	@Override
-	protected Object evaluateNumbers(final List<Number> operandValues) {
+	public Object evaluateNumbers(final List<Number> operandValues) {
 		return operandValues.stream().mapToDouble(Number::doubleValue).reduce((a, b) -> a - b).orElse(0);
 	}
 }
