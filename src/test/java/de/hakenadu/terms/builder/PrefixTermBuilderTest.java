@@ -25,7 +25,7 @@ public final class PrefixTermBuilderTest {
 	 */
 	@Test
 	public void testComposite() {
-		final Term result = PrefixTermBuilder.create()//
+	  final Term result = PrefixTermBuilder.create()//
 				.beginOperation(Operators.SUBTRACT)//
 				.constant(1337)//
 				.beginOperation(Operators.ADD)//
