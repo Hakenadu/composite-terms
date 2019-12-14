@@ -18,10 +18,7 @@ public final class AddOperationEvaluator implements OperationEvaluator {
 				result = result.intValue() + ((Number) operandValue).intValue();
 			}
 
-			if (operandValue instanceof Double) {
-				result = result.doubleValue() + ((Number) operandValue).doubleValue();
-			}
-
+			result = result.doubleValue() + ((Number) operandValue).doubleValue();
 		}
 
 		return result;
