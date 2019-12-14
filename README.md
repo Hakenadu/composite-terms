@@ -59,9 +59,33 @@ Term myTerm = PrefixTermBuilder.create()
 ```
 ### Creating the same Term in a basic way
 ```java
+// 1337 - (500 + x)
 Term myTerm = new Operation(Operators.SUBTRACT,
 	new Constant(1337),
 	new Operation(Operators.ADD,
 		new Constant(500),
 		new Variable("x")));
+```
+
+## Evaluate a Term
+A composite of Terms is evaluated using a visitor pattern.
+The concrete Visitor must be able to provide values for all variable names in a term.
+```java
+/*
+ * a SimpleEvaluationVisitor is an implementation of the EvaluationVisitor
+ * which uses a java.util.Map to map values to concrete variable names.
+ */
+SimpleEvaluationVisitor evaluationVisitor = new SimpleEvaluationVisitor();
+
+// the only variable in myTerm is "x" so lets apply the value -163 to it.
+evaluationVisitor.getVariableValues().put("x", -163);
+
+// an instance of the EvaluationContext is passed on visit to retrieve values
+EvaluationContext evaluationContext = new EvaluationContext();
+
+// lets evaluate our Term...
+myTerm.accept(evaluationVisitor, evaluationContext);
+
+// ...done: result == 1000
+Number result = (Number) evaluationContext.getValue();
 ```
