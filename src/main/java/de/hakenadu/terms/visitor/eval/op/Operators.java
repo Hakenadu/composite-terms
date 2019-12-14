@@ -5,12 +5,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 import de.hakenadu.terms.visitor.eval.op.impl.AddOperationEvaluator;
+import de.hakenadu.terms.visitor.eval.op.impl.EqualsOperationEvaluator;
+import de.hakenadu.terms.visitor.eval.op.impl.MultiplyOperationEvaluator;
 import de.hakenadu.terms.visitor.eval.op.impl.SubtractOperationEvaluator;
 
 public class Operators {
 
 	public static final String ADD = "add";
 	public static final String SUBTRACT = "subtract";
+	public static final String MULTIPLY = "multiply";
+	public static final String EQUALS = "equals";
 
 	public static final Map<String, OperationEvaluator> DEFAULTS = Collections
 			.unmodifiableMap(new HashMap<String, OperationEvaluator>() {
@@ -20,6 +24,8 @@ public class Operators {
 				{
 					put(ADD, new AddOperationEvaluator());
 					put(SUBTRACT, new SubtractOperationEvaluator());
+					put(MULTIPLY, new MultiplyOperationEvaluator());
+					put(EQUALS, new EqualsOperationEvaluator());
 				}
 
 			});
