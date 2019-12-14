@@ -1,9 +1,12 @@
 package de.hakenadu.terms.gson.converter;
 
+import java.util.Optional;
+
 import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 
-public final class NumberConstantValueConverter implements ConstantValueConverter<Number> {
+public class NumberConstantValueConverter implements ConstantValueConverter<Number> {
 
 	@Override
 	public JsonElement toJson(final Number value) {
@@ -12,7 +15,8 @@ public final class NumberConstantValueConverter implements ConstantValueConverte
 
 	@Override
 	public Number fromJson(final JsonElement jsonElement) {
-		return jsonElement.getAsJsonPrimitive().getAsNumber();
+		return getAsNumber(jsonElement)
+				.orElseThrow(() -> new JsonParseException("not a number member: " + jsonElement));
 	}
 
 	@Override
@@ -23,5 +27,13 @@ public final class NumberConstantValueConverter implements ConstantValueConverte
 	@Override
 	public Class<Number> getTypeClass() {
 		return Number.class;
+	}
+
+	static final Optional<Number> getAsNumber(final JsonElement jsonElement) {
+		return Optional.of(jsonElement)//
+				.filter(JsonElement::isJsonPrimitive)//
+				.map(JsonElement::getAsJsonPrimitive)//
+				.filter(JsonPrimitive::isNumber)//
+				.map(JsonPrimitive::getAsNumber);
 	}
 }
