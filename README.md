@@ -1,16 +1,14 @@
 # composite-terms
 A light extensible <b>java</b> library for creating composites of terms which are evaluatable using a visitor pattern.
-
 Serialization to json and deserialization from json are also supported by default using [gson](https://github.com/google/gson).
 
-- [composite-terms](#composite-terms)
-  * [JSON](#json)
-  * [Deserialization](#deserialization)
-  * [Create a Term](#create-a-term)
-    + [Creating a Term using a TermBuilder](#creating-a-term-using-a-termbuilder)
-    + [Creating the same Term in a basic way](#creating-the-same-term-in-a-basic-way)
-  * [Evaluate a Term](#evaluate-a-term)
-  * [Serialize a Term](#serialize-a-term)
+- [JSON](#json)
+- [Deserialization](#deserialization)
+- [Create a Term](#create-a-term)
+  * [Creating a Term using a TermBuilder](#creating-a-term-using-a-termbuilder)
+  * [Creating the same Term in a basic way](#creating-the-same-term-in-a-basic-way)
+- [Evaluate a Term](#evaluate-a-term)
+- [Serialize a Term](#serialize-a-term)
   
 ## JSON
 This is an example term:
