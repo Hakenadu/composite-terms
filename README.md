@@ -1,5 +1,5 @@
 # composite-terms
-A light extensible library for creating composites of terms which are evaluatable using a visitor pattern.
+A light extensible <b>java</b> library for creating composites of terms which are evaluatable using a visitor pattern.
 
 Serialization to json and deserialization from json are also supported by default using [gson](https://github.com/google/gson).
 
@@ -35,7 +35,8 @@ This is an example term:
 }
 ```
 
-It is deserialized as follows (let json be a string constant containing the mentioned structure):
+## Deserialization
+The term mentioned above is deserialized as follows (let json be a string constant containing the mentioned structure):
 ```java
 	Term term = TermsGson.createGson().fromJson(json, Term.class);
 ```
