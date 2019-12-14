@@ -4,6 +4,7 @@ Serialization to json and deserialization from json are supported by default usi
 
 Next to gson no other libraries are needed.
 
+## Table of Contents
 - [JSON](#json)
 - [Deserialize a Term](#deserialize-a-term)
 - [Create a Term](#create-a-term)
