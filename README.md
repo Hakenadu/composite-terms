@@ -4,7 +4,7 @@ Serialization to json and deserialization from json are also supported by defaul
 No other libraries are needed.
 
 - [JSON](#json)
-- [Deserialization](#deserialization)
+- [Deserialize a Term](#deserialize-a-term)
 - [Create a Term](#create-a-term)
   * [Creating a Term using a TermBuilder](#creating-a-term-using-a-termbuilder)
   * [Creating the same Term in a basic way](#creating-the-same-term-in-a-basic-way)
@@ -43,7 +43,7 @@ This is an example term:
 }
 ```
 
-## Deserialization
+## Deserialize a Term
 The term mentioned above is deserialized as follows (let json be a string constant containing the mentioned structure):
 ```java
 Term deserializedTerm = TermsGson.createGson().fromJson(json, Term.class);
