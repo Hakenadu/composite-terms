@@ -102,6 +102,6 @@ Number result = (Number) evaluationContext.getValue();
 ## Serialize a Term
 Serialization is also done via [gson](https://github.com/google/gson).
 ```java
-// we'll use myTerm from above in most of the following examples ;-)
+// again we'll use myTerm from above ;-)
 String json = TermsGson.createGson().toJson(myTerm);
 ```
