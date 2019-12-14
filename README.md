@@ -67,6 +67,13 @@ Term myTerm = new Operation(Operators.SUBTRACT,
 		new Variable("x")));
 ```
 
+## Serialize a Term
+Serialization is also done via [gson](https://github.com/google/gson).
+```java
+// we'll use myTerm from above in most of the following examples ;-)
+String json = TermsGson.createGson().toJson(myTerm);
+```
+
 ## Evaluate a Term
 A composite of Terms is evaluated using a visitor pattern.
 The concrete Visitor must be able to provide values for all variable names in a term.
@@ -88,11 +95,4 @@ myTerm.accept(evaluationVisitor, evaluationContext);
 
 // ...done: result == 1000
 Number result = (Number) evaluationContext.getValue();
-```
-
-## Serialize a Term
-Serialization is also done via [gson](https://github.com/google/gson).
-```java
-// again we'll use myTerm from above ;-)
-String json = TermsGson.createGson().toJson(myTerm);
 ```
