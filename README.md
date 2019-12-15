@@ -107,7 +107,7 @@ Serialization is also done via [gson](https://github.com/google/gson).
 String json = TermsGson.createGson().toJson(myTerm);
 ```
 
-## Add an own Operator
+## Add a custom Operator
 Multiple basic operators are already implemented and accessible via the [Operators class](https://github.com/Hakenadu/composite-terms/blob/master/src/main/java/de/hakenadu/terms/visitor/eval/op/Operators.java).
 
 Own operators only have to registered if evaluations have to be performed.
@@ -129,7 +129,7 @@ public class FooOperationEvaluator implements OperationEvaluator {
 }
 ```
 
-Registering the custom OperationEvaluator
+Registering the custom OperationEvaluator:
 ```java
 EvaluationVisitor visitor = new SimpleEvaluationVisitor();
 // ...
@@ -138,3 +138,5 @@ visitor.getOperationEvaluators().put("foo", new FooOperationEvaluator());
 
 This example is contained in the [CustomOperatorTest](https://github.com/Hakenadu/composite-terms/blob/master/src/test/java/de/hakenadu/terms/visitor/eval/CustomOperatorTest.java).
 
+## Add a custom Constant Datatype
+Instances of [Constant](https://github.com/Hakenadu/composite-terms/blob/master/src/main/java/de/hakenadu/terms/Constant.java) are serialized to JSON with an additional "datatype" member. This is necessary to enable the correct deserialization using the gson [ConstantTypeHierarchyAdapter](https://github.com/Hakenadu/composite-terms/blob/master/src/main/java/de/hakenadu/terms/gson/ConstantTypeHierarchyAdapter.java).
