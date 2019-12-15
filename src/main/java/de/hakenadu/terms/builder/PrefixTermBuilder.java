@@ -6,7 +6,6 @@ import java.util.Deque;
 import java.util.Objects;
 
 import de.hakenadu.terms.Constant;
-import de.hakenadu.terms.LeafTerm;
 import de.hakenadu.terms.Operation;
 import de.hakenadu.terms.Term;
 import de.hakenadu.terms.Variable;
@@ -97,5 +96,4 @@ public final class PrefixTermBuilder implements TermBuilder {
 		}
 		operations.peek().getOperands().add(operand);
 	}
-	
 }
