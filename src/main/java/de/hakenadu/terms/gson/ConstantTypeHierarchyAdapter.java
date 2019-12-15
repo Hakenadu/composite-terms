@@ -3,6 +3,7 @@ package de.hakenadu.terms.gson;
 import java.lang.reflect.Type;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import com.google.gson.JsonDeserializationContext;
@@ -32,6 +33,19 @@ public class ConstantTypeHierarchyAdapter implements JsonSerializer<Constant>, J
 		getValueConverters().add(new BooleanConstantValueConverter());
 		getValueConverters().add(new NumberConstantValueConverter());
 		getValueConverters().add(new StringConstantValueConverter());
+	}
+
+	public ConstantTypeHierarchyAdapter withValueConverter(final ConstantValueConverter<?> valueConverter) {
+		Objects.requireNonNull(valueConverter, "no valueConverter passed");
+
+		if (valueConverters.stream().map(ConstantValueConverter::getTypeName)
+				.anyMatch(valueConverter.getTypeName()::equals)) {
+			throw new IllegalArgumentException("duplicate TypeName \"" + valueConverter.getTypeName() + '\"');
+		}
+
+		this.valueConverters.add(valueConverter);
+
+		return this;
 	}
 
 	/**
