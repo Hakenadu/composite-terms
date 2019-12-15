@@ -12,6 +12,8 @@ Next to gson no other libraries are needed.
   * [Creating the same Term in a basic way](#creating-the-same-term-in-a-basic-way)
 - [Evaluate a Term](#evaluate-a-term)
 - [Serialize a Term](#serialize-a-term)
+- [Add a custom Operator](#add-a-custom-operator)
+- [Add a custom Constant Datatype](#add-a-custom-constant-datatype)
   
 ## JSON
 This is an example term:
@@ -140,3 +142,51 @@ This example is contained in the [CustomOperatorTest](https://github.com/Hakenad
 
 ## Add a custom Constant Datatype
 Instances of [Constant](https://github.com/Hakenadu/composite-terms/blob/master/src/main/java/de/hakenadu/terms/Constant.java) are serialized to JSON with an additional "datatype" member. This is necessary to enable the correct deserialization using the gson [ConstantTypeHierarchyAdapter](https://github.com/Hakenadu/composite-terms/blob/master/src/main/java/de/hakenadu/terms/gson/ConstantTypeHierarchyAdapter.java).
+
+The registration is done as follows:
+```java
+/** create a custom datatype class */
+public class Foo {
+	private String bar;
+	private String bas;
+}
+
+/** create a ConstantValueConverter for the custom datatype */
+public class FooConstantValueConverter implements ConstantValueConverter<Foo> {
+
+	@Override
+	public String getTypeName() {
+		return "foo"; // is contained in json as value of the "datatype" member
+	}
+
+	@Override
+	public Class<Foo> getTypeClass() {
+		return Foo.class; // for typesafe deserialization
+	}
+
+	@Override
+	public JsonElement toJson(Foo foo) {
+		/*
+		 * It is also possible to create a JsonObject by hand. In this case we want to
+		 * rely on Gson's default serialization.
+		 */
+		return new Gson().toJsonTree(foo, Foo.class);
+	}
+
+	@Override
+	public Foo fromJson(JsonElement jsonElement) {
+		// for our custom deserialization we also want to use Gson's default mechanism
+		return new Gson().fromJson(jsonElement, Foo.class);
+	}
+}
+```
+
+Then register the custom ConstantValueConverter on Gson-Creation:
+```java
+ConstantTypeHierarchyAdapter customConstantTypeHierarchyAdapter = new ConstantTypeHierarchyAdapter()
+		.withValueConverter(new FooConstantValueConverter());
+
+Gson mainGson = TermsGson.createGson(customConstantTypeHierarchyAdapter);
+```
+
+The [CustomConstantValueConverterTest](https://github.com/Hakenadu/composite-terms/blob/master/src/test/java/de/hakenadu/terms/gson/converter/CustomConstantValueConverterTest.java) contains the above explained example with more details.
