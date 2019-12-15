@@ -25,7 +25,7 @@ import de.hakenadu.terms.Variable;
  * 	.endOperation()
  * 	.build()
  * </pre>
- * </code>
+ * </code>  
  * 
  * @since 13.12.2019
  */
@@ -46,67 +46,56 @@ public final class PrefixTermBuilder implements TermBuilder {
 	 */
 	private Deque<Operation> operations = new ArrayDeque<>();
 
-	/**
-	 * the {@link Term} which is returned on {@link #build()} (may also be a
-	 * {@link LeafTerm})
-	 */
-	private Term result;
-
 	@Override
 	public Term build() {
-		Objects.requireNonNull(result, "no term added to builder");
-
-		if (!operations.isEmpty()) {
+		if (operations.size() != 1) {
 			throw new IllegalStateException("unfinished operation: " + operations.peek().getOperator());
 		}
 
-		return result;
-	}
-
-	public PrefixTermBuilder leaf(final LeafTerm leafTerm) {
-		Objects.requireNonNull(leafTerm, "no LeafTerm passed");
-
-		if (!operations.isEmpty()) {
-			operations.peek().getOperands().add(leafTerm);
-			return this;
-		}
-
-		if (result == null) {
-			result = leafTerm;
-			return this;
-		}
-
-		throw new IllegalStateException("no operation on deque but a LeafTerm was already added");
+		return operations.peek().getOperands().get(0);
 	}
 
 	public PrefixTermBuilder variable(final String name) {
-		return leaf(new Variable(name));
+		addOperand(new Variable(name));
+		
+		return this;
 	}
 
 	public PrefixTermBuilder constant(final Object value) {
-		return leaf(new Constant(value));
+		addOperand(new Constant(value));
+
+		return this;
 	}
 
 	public PrefixTermBuilder beginOperation(final String operator) {
 		final Operation operation = new Operation(operator, new ArrayList<>());
 
-		if (!operations.isEmpty()) {
-			operations.peek().getOperands().add(operation);
-		}
+		addOperand(operation);
 		operations.push(operation);
 
 		return this;
 	}
 
 	public PrefixTermBuilder endOperation() {
-		if (operations.isEmpty()) {
+		if (operations.size() <= 1) {
 			throw new IllegalStateException("no operation on deque");
 		}
-		result = operations.pop();
+		operations.pop();
 		return this;
 	}
 
 	private PrefixTermBuilder() {
-		// not instantiated
+		operations.push(
+				new Operation("foo" /* does not matter */, new ArrayList<>()));
 	}
+
+	private void addOperand(final Term operand) {
+		Objects.requireNonNull(operand, "no operand passed");
+
+		if (operations.size() == 1 && ! operations.peek().getOperands().isEmpty()) {
+			throw new IllegalStateException("term with more than single root");
+		}
+		operations.peek().getOperands().add(operand);
+	}
+	
 }
