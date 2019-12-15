@@ -106,3 +106,35 @@ Serialization is also done via [gson](https://github.com/google/gson).
 // again we'll use myTerm from above ;-)
 String json = TermsGson.createGson().toJson(myTerm);
 ```
+
+## Add an own Operator
+Multiple basic operators are already implemented and accessible via the [Operators class](https://github.com/Hakenadu/composite-terms/blob/master/src/main/java/de/hakenadu/terms/visitor/eval/op/Operators.java).
+
+Own operators only have to registered if evaluations have to be performed.
+In this case an implementation of [EvaluationVisitor](https://github.com/Hakenadu/composite-terms/blob/master/src/main/java/de/hakenadu/terms/visitor/eval/EvaluationVisitor.java) is used and evaluation rules for custom operators are then added as follows:
+
+Creating a custom OperationEvaluator:
+```java
+/**
+ * an OperationEvaluator for our custom operator "foo" which  operates on any type of operands and returns
+ * "foo" if at least one {@link Number} operand is passed and "bar" otherwise.
+ */
+public class FooOperationEvaluator implements OperationEvaluator {
+
+	@Override
+	public String evaluate(final List<Object> operandValues) {
+		final boolean foo = operandValues.stream().anyMatch(Number.class::isInstance);
+		return foo ? "foo" : "bar";
+	}
+}
+```
+
+Registering the custom OperationEvaluator
+```java
+EvaluationVisitor visitor = new SimpleEvaluationVisitor();
+// ...
+visitor.getOperationEvaluators().put("foo", new FooOperationEvaluator());
+```
+
+This example is contained in the [CustomOperatorTest](https://github.com/Hakenadu/composite-terms/blob/master/src/test/java/de/hakenadu/terms/visitor/eval/CustomOperatorTest.java).
+
