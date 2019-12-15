@@ -25,7 +25,7 @@ import de.hakenadu.terms.Variable;
  * 	.endOperation()
  * 	.build()
  * </pre>
- * </code>
+ * </code>  
  * 
  * @since 13.12.2019
  */
@@ -58,19 +58,19 @@ public final class PrefixTermBuilder implements TermBuilder {
 	public PrefixTermBuilder variable(final String name) {
 		addOperand(new Variable(name));
 		
-    return this;
+		return this;
 	}
 
 	public PrefixTermBuilder constant(final Object value) {
 		addOperand(new Constant(value));
 
-    return this;
+		return this;
 	}
 
 	public PrefixTermBuilder beginOperation(final String operator) {
-    final Operation operation = new Operation(operator, new ArrayList<>());
+		final Operation operation = new Operation(operator, new ArrayList<>());
 
-    addOperand(operation);
+		addOperand(operation);
 		operations.push(operation);
 
 		return this;
@@ -85,17 +85,17 @@ public final class PrefixTermBuilder implements TermBuilder {
 	}
 
 	private PrefixTermBuilder() {
-    operations.push(
-        new Operation("foo" /* does not matter */, new ArrayList<>()));
+		operations.push(
+				new Operation("foo" /* does not matter */, new ArrayList<>()));
 	}
 
-  private void addOperand(final Term operand) {
-    Objects.requireNonNull(operand, "no operand passed");
+	private void addOperand(final Term operand) {
+		Objects.requireNonNull(operand, "no operand passed");
 
-    if (operations.size() == 1 && ! operations.peek().getOperands().isEmpty()) {
-      throw new IllegalStateException("term with more than single root");
-    }
-    operations.peek().getOperands().add(operand);
-  }
-  
+		if (operations.size() == 1 && ! operations.peek().getOperands().isEmpty()) {
+			throw new IllegalStateException("term with more than single root");
+		}
+		operations.peek().getOperands().add(operand);
+	}
+	
 }
