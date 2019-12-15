@@ -55,20 +55,16 @@ public final class PrefixTermBuilder implements TermBuilder {
 		return operations.peek().getOperands().get(0);
 	}
 
-	public PrefixTermBuilder leaf(final LeafTerm leafTerm) {
-		Objects.requireNonNull(leafTerm, "no LeafTerm passed");
-		
-		addOperand(leafTerm);
-
-		return this;
-	}
-
 	public PrefixTermBuilder variable(final String name) {
-		return leaf(new Variable(name));
+		addOperand(new Variable(name));
+		
+    return this;
 	}
 
 	public PrefixTermBuilder constant(final Object value) {
-		return leaf(new Constant(value));
+		addOperand(new Constant(value));
+
+    return this;
 	}
 
 	public PrefixTermBuilder beginOperation(final String operator) {
@@ -94,9 +90,12 @@ public final class PrefixTermBuilder implements TermBuilder {
 	}
 
   private void addOperand(final Term operand) {
-    if (operations.size() == 1 && operations.peek().getOperands().size() > 0) {
+    Objects.requireNonNull(operand, "no operand passed");
+
+    if (operations.size() == 1 && ! operations.peek().getOperands().isEmpty()) {
       throw new IllegalStateException("term with more than single root");
     }
     operations.peek().getOperands().add(operand);
   }
+  
 }
