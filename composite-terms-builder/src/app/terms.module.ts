@@ -1,21 +1,22 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {D3TermBuilderComponent} from './builder/d3';
-import {FormTermBuilderComponent} from './builder/form';
+import {DefaultTermBuilderComponent, DefaultTermBuilderInteractionsComponent} from './builder/default';
 import {DemoComponent} from './demo.component';
+import {TreeModule} from 'angular-tree-component';
 
 @NgModule({
   declarations: [
     DemoComponent,
-    D3TermBuilderComponent,
-    FormTermBuilderComponent
+    DefaultTermBuilderComponent,
+    DefaultTermBuilderInteractionsComponent
   ],
   exports: [
-    D3TermBuilderComponent,
-    FormTermBuilderComponent
+    DefaultTermBuilderComponent,
+    DefaultTermBuilderInteractionsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    TreeModule.forRoot()
   ],
   providers: [],
   bootstrap: [DemoComponent]
