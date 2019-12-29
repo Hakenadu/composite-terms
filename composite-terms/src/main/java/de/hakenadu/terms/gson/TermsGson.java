@@ -29,13 +29,17 @@ public final class TermsGson {
 	}
 
 	public static GsonBuilder createGsonBuilder(final ConstantTypeHierarchyAdapter constantTypeHierarchyAdapter) {
+		return initializeGsonBuilder(new GsonBuilder(), constantTypeHierarchyAdapter);
+	}
+
+	public static GsonBuilder initializeGsonBuilder(final GsonBuilder gsonBuilder,
+			final ConstantTypeHierarchyAdapter constantTypeHierarchyAdapter) {
 		// polymorphic support
 		final RuntimeTypeAdapterFactory<Term> termTypeAdapterFactory = RuntimeTypeAdapterFactory.of(Term.class);
 		termTypeAdapterFactory.registerSubtype(Constant.class, "constant");
 		termTypeAdapterFactory.registerSubtype(Variable.class, "variable");
 		termTypeAdapterFactory.registerSubtype(Operation.class, "operation");
 
-		final GsonBuilder gsonBuilder = new GsonBuilder();
 		gsonBuilder.registerTypeAdapterFactory(termTypeAdapterFactory);
 		gsonBuilder.registerTypeHierarchyAdapter(Constant.class, constantTypeHierarchyAdapter);
 		return gsonBuilder;
