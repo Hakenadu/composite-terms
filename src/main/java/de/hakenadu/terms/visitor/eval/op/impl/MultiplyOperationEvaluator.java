@@ -14,6 +14,6 @@ public final class MultiplyOperationEvaluator implements NumberOperationEvaluato
 
 	@Override
 	public Object evaluateNumbers(final List<Number> operandValues) {
-		return operandValues.stream().mapToDouble(Number::doubleValue).reduce((a, b) -> a * b).orElse(0);
+		return operandValues.stream().mapToDouble(Number::doubleValue).reduce((a, b) -> a * b).orElse(1);
 	}
 }
