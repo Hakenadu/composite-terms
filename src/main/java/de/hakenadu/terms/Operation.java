@@ -41,6 +41,10 @@ public final class Operation implements Term {
 		Objects.requireNonNull(operator, "no operator passed to constructor");
 		Objects.requireNonNull(operands, "no operands passed to constructor");
 
+		if (operands.isEmpty()) {
+			throw new IllegalArgumentException("empty list of operands passed to constructor");
+		}
+
 		this.operator = operator;
 		this.operands = operands;
 	}
