@@ -14,6 +14,7 @@ public final class AddOperationEvaluator implements NumberOperationEvaluator {
 
 	@Override
 	public Object evaluateNumbers(final List<Number> operandValues) {
-		return operandValues.stream().mapToDouble(Number::doubleValue).reduce(0, (a, b) -> a + b);
+		return operandValues.stream().mapToDouble(Number::doubleValue).reduce((a, b) -> a + b)
+				.orElseThrow(() -> new IllegalArgumentException("empty list of operands passed to add operation"));
 	}
 }

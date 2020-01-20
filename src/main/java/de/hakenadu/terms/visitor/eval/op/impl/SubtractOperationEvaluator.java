@@ -14,6 +14,7 @@ public final class SubtractOperationEvaluator implements NumberOperationEvaluato
 
 	@Override
 	public Object evaluateNumbers(final List<Number> operandValues) {
-		return operandValues.stream().mapToDouble(Number::doubleValue).reduce((a, b) -> a - b).orElse(0);
+		return operandValues.stream().mapToDouble(Number::doubleValue).reduce((a, b) -> a - b)
+				.orElseThrow(() -> new IllegalArgumentException("empty list of operands passed to subtract operation"));
 	}
 }
