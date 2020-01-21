@@ -14,6 +14,10 @@ public final class MultiplyOperationEvaluator implements NumberOperationEvaluato
 
 	@Override
 	public Object evaluateNumbers(final List<Number> operandValues) {
+		if (operandValues.size() < 2) {
+			throw new IllegalArgumentException("less than 2 operands passed to multiply operation");
+		}
+
 		return operandValues.stream().mapToDouble(Number::doubleValue).reduce((a, b) -> a * b)
 				.orElseThrow(() -> new IllegalArgumentException("empty list of operands passed to multiply operation"));
 	}
