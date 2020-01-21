@@ -18,6 +18,6 @@ public final class NotOperationEvaluator implements OperationEvaluator {
 			throw new IllegalArgumentException("more than one operand passed to not operation");
 		}
 
-		return Boolean.TRUE.equals(operandValues.get(0));
+		return Boolean.FALSE.equals(operandValues.get(0));
 	}
 }
