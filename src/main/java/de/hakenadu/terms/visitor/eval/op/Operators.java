@@ -14,6 +14,7 @@ import de.hakenadu.terms.visitor.eval.op.impl.LessThanOperationEvaluator;
 import de.hakenadu.terms.visitor.eval.op.impl.LessThanOrEqualOperationEvaluator;
 import de.hakenadu.terms.visitor.eval.op.impl.MultiplyOperationEvaluator;
 import de.hakenadu.terms.visitor.eval.op.impl.NotOperationEvaluator;
+import de.hakenadu.terms.visitor.eval.op.impl.OrOperationEvaluator;
 import de.hakenadu.terms.visitor.eval.op.impl.SubtractOperationEvaluator;
 
 /**
@@ -35,6 +36,7 @@ public final class Operators {
 	public static final String LESS_THAN_OR_EQUAL = "lessThanOrEqual";
 	public static final String MULTIPLY = "multiply";
 	public static final String NOT = "not";
+	public static final String OR = "or";
 	public static final String SUBTRACT = "subtract";
 
 	public static final Map<String, OperationEvaluator> DEFAULTS = Collections
@@ -53,6 +55,7 @@ public final class Operators {
 					put(LESS_THAN_OR_EQUAL, new LessThanOrEqualOperationEvaluator());
 					put(MULTIPLY, new MultiplyOperationEvaluator());
 					put(NOT, new NotOperationEvaluator());
+					put(OR, new OrOperationEvaluator());
 					put(SUBTRACT, new SubtractOperationEvaluator());
 				}
 
