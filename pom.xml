@@ -4,7 +4,7 @@
 
 	<groupId>com.github.hakenadu</groupId>
 	<artifactId>composite-terms</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4-SNAPSHOT</version>
 	
 	<name>Composite Terms</name>
 	<description>A light extensible java 8+ library for creating composites of terms which are evaluatable using a visitor pattern.</description>
@@ -176,7 +176,7 @@
 		<connection>scm:git:ssh://git@github.com:Hakenadu/composite-terms.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com:Hakenadu/composite-terms.git</developerConnection>
 		<url>https://github.com/Hakenadu/composite-terms</url>
-		<tag>composite-terms-0.0.3</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<dependencies>
