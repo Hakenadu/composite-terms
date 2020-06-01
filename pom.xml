@@ -4,7 +4,7 @@
 
 	<groupId>com.github.hakenadu</groupId>
 	<artifactId>composite-terms</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.2.SNAPSHOT</version>
 
 	<properties>
 
@@ -46,6 +46,9 @@
 				<version>2.5.3</version>
 				<configuration>
 					<localCheckout>true</localCheckout>
+					<checkModificationExcludes>
+						<checkModificationExclude>pom.xml</checkModificationExclude>
+					</checkModificationExcludes>
 					<pushChanges>false</pushChanges>
 					<mavenExecutorId>forked-path</mavenExecutorId>
 					<arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
