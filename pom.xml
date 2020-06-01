@@ -4,7 +4,7 @@
 
 	<groupId>com.github.hakenadu</groupId>
 	<artifactId>composite-terms</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3-SNAPSHOT</version>
 
 	<properties>
 
