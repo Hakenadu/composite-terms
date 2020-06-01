@@ -8,7 +8,15 @@
 	
 	<name>Composite Terms</name>
 	<description>A light extensible java 8+ library for creating composites of terms which are evaluatable using a visitor pattern.</description>
-	
+	<url>https://github.com/Hakenadu/composite-terms</url>
+
+	<licenses>
+		<license>
+			<name>Apache 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+
 	<developers>
 		<developer>
 			<id>mseiche</id>
