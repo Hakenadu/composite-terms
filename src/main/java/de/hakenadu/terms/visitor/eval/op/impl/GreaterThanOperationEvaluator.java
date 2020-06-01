@@ -5,7 +5,7 @@ import de.hakenadu.terms.visitor.eval.op.BinaryNumberOperationEvaluator;
 /**
  * evaluates the "greater than" operation:
  * 
- * (firstOperand > secondOperand)
+ * (firstOperand &gt; secondOperand)
  * 
  * @author Manuel Seiche
  * @since 21.01.2020

@@ -7,6 +7,7 @@ import de.hakenadu.terms.Constant;
 import de.hakenadu.terms.Operation;
 import de.hakenadu.terms.Term;
 import de.hakenadu.terms.Variable;
+import de.hakenadu.terms.gson.extras.RuntimeTypeAdapterFactory;
 
 /**
  * Provides utilities for creating {@link Gson} instances
