@@ -15,6 +15,15 @@ Next to gson no other libraries are needed.
 - [Add a custom Operator](#add-a-custom-operator)
 - [Add a custom Constant Datatype](#add-a-custom-constant-datatype)
   
+## Maven Dependency
+```xml
+<dependency>
+  <groupId>com.github.hakenadu</groupId>
+  <artifactId>composite-terms</artifactId>
+  <version>0.0.3</version>
+</dependency>
+```
+
 ## JSON
 This is an example term:
 
