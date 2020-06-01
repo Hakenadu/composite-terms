@@ -14,7 +14,6 @@ import de.hakenadu.terms.Variable;
 
 /**
  * <code>
- * <pre>
  * // 1337 - (500 + x)
  * PrefixTermBuilder.create()
  * 	.beginOperation(Operators.SUBTRACT)
@@ -25,7 +24,6 @@ import de.hakenadu.terms.Variable;
  * 	.endOperation()
  * 	.endOperation()
  * 	.build()
- * </pre>
  * </code>
  * 
  * @since 13.12.2019
