@@ -4,7 +4,7 @@
 
 	<groupId>com.github.hakenadu</groupId>
 	<artifactId>composite-terms</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3-SNAPSHOT</version>
 
 	<properties>
 
@@ -151,7 +151,7 @@
 		<connection>scm:git:ssh://git@github.com:Hakenadu/composite-terms.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com:Hakenadu/composite-terms.git</developerConnection>
 		<url>https://github.com/Hakenadu/composite-terms</url>
-		<tag>composite-terms-0.0.2</tag>
+		<tag>0.0.2</tag>
 	</scm>
 
 	<dependencies>
