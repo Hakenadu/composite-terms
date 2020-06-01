@@ -1,12 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.github.hakenadu</groupId>
 	<artifactId>composite-terms</artifactId>
-	<version>0.0.2.SNAPSHOT</version>
+	<version>0.0.2</version>
 
 	<properties>
 
@@ -150,7 +148,7 @@
 		<connection>scm:git:ssh://git@github.com:Hakenadu/composite-terms.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com:Hakenadu/composite-terms.git</developerConnection>
 		<url>https://github.com/Hakenadu/composite-terms</url>
-		<tag>composite-terms-0.0.2</tag>
+		<tag>0.0.2</tag>
 	</scm>
 
 	<dependencies>
